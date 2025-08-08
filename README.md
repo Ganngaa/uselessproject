@@ -1,39 +1,123 @@
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
- HEAD
-# uselessproject
+Aura Checker 🎯
 
 
-# Aura App
+Basic Details
 
-## Overview
-The Aura App is a web application designed to provide users with an interactive experience for managing and calculating aura events. It features a clean and modern interface, utilizing a responsive design to ensure usability across various devices.
+Team Name: Aura.js
 
-## Features
-- User-friendly interface with a responsive layout.
-- Interactive buttons for saving and calculating aura events.
-- Sections for displaying results and recent calculations.
-- A pie chart visualization for aura data.
 
-## Getting Started
+Team Members
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Safari, etc.)
-- Internet connection (for any external resources)
+- Team Lead: Ajith Joy - Government Engineering College, Idukki
+- Member 2: Ganga Anilkumar - Government Engineering College, Idukki
 
-### Installation
-1. Clone the repository or download the project files.
-2. Open the `index.html` file in your preferred web browser.
 
-### Usage
-- Navigate through the application using the buttons provided.
-- Input your aura event data in the designated sections.
-- Click on the "Calculate" button to see the results.
-- Recent calculations will be displayed for your reference.
+Project Description
 
-## Contributing
-Contributions are welcome! If you have suggestions for improvements or new features, please feel free to submit a pull request.
+This project is a web-based Aura Calculator that lets users record daily aura-related activities, track their total aura score, and visualize results through interactive charts.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
- 370169f (Initial commit)
+The Problem (that doesn't exist)
+
+It solves the urgent problem of not knowing if your aura is glowing or just buffering, while tracking how many auras you’ve lost or gained and showing your current vibe status.
+
+
+The Solution (that nobody asked for)
+
+This project makes aura tracking fun and easy! Just answer quick, playful questions about your day ("Did you help someone?" +50 points, "Argue with a coworker?" -30 points). The more experiences you log, the smarter it gets—comparing your vibes against others and even celebrity aura champs. Get instant results like "Sunshine Superstar" or "Needs More Coffee," with tips to boost your energy. It's like a game that actually improves your mood.
+
+Technical Details
+Technologies/Components Used
+
+For Software:
+- HTML5 (Structure)
+  CSS3 (Styling with animations and gradients)
+  JavaScript (Logic, interactivity)
+
+
+- Chart.js
+  Animate.css
+  Font Awesome 
+  Google Fonts 
+
+- GitHub/Git
+  VS Code
+  Chrome DevTools 
+
+
+Implementation
+
+Installation
+Clone the repo:
+  https://github.com/Ganngaa/uselessproject
+
+Run
+open index.html  # macOS
+start index.html # Windows
+
+Project Documentation
+For Software:
+
+# Screenshots (Add at least 3)
+![Screenshot1](Add screenshot 1 here with proper name)
+*Add caption explaining what this shows*
+
+![Screenshot2](Add screenshot 2 here with proper name)
+*Add caption explaining what this shows*
+
+![Screenshot3](Add screenshot 3 here with proper name)
+*Add caption explaining what this shows*
+
+Diagrams
+[User Starts] → [Answer Fun Questions] → [Aura Calculation] → [Get Results]
+       ↑               ↑                        ↑
+[LocalStorage]  [Point System]          [Celebrity Comparison]
+
+1. User Interaction Phase
+Playful Questionnaires:
+Users answer quick, fun questions like:
+"Did you:
+✓ Pet a dog today? (+50)
+✗ Forget to hydrate? (-20)"
+
+Activity Logging:
+Track daily wins/fails with simple checkboxes.
+
+2. Data Processing Phase
+Point Calculation
+Time Adjustment
+Celebrity Benchmarking:
+Compare scores to viral aura stars.
+
+3. Results Generation
+Aura Classification:
+Visual Dashboard:
+graphs show energy trends
+
+Shareable Stats:
+Generate tweet-ready results.
+
+
+  Project Demo
+# Video
+[Add your demo video link here]
+*Explain what the video demonstrates*
+
+# Additional Demos
+[Add any extra demo materials/links]
+
+## Team Contributions
+- Ajith Joy: Frontend development
+- Ganga Anilkumar: Assisted in frontend development
+
+
+---
+Made with ❤️ at TinkerHub Useless Projects 
+
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
+
+
+
