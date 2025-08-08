@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aura Vibes Calculator ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #f8fafc 0%, #e0c3fc 50%, #8ec5fc 100%);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      border-radius: 24px;
+      padding: 36px 24px 32px 24px;
+      margin: 40px 0;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid #b57abc44;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 2px;
+      color: #601ca3;
+      text-shadow: 0 2px 12px #e0c3fc88;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: 800;
+      text-align: center;
+    }
+    .button-group {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 2rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .nav-btn {
+      background: linear-gradient(90deg, #ffb6ea 0%, #b57abc 50%, #601ca3 100%);
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 12px #b57abc33;
+      letter-spacing: 1px;
+      outline: none;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: linear-gradient(90deg, #601ca3 0%, #ffb6ea 100%);
+      transform: translateY(-2px) scale(1.07);
+    }
+    .section {
+      display: none;
+      width: 100%;
+      margin-top: 1.5rem;
+      animation: fadeIn 0.5s;
+    }
+    .section.active {
+      display: block;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 14px;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 2px solid #b57abc55;
+      font-size: 1.05rem;
+      resize: vertical;
+      background: #f8fafc;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      font-family: inherit;
+    }
+    #save-btn, #calculate-btn, #add-other-btn {
+      background: linear-gradient(90deg, #601ca3 0%, #ffb6ea 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0;
+      margin-bottom: 10px;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px #b57abc33;
+      letter-spacing: 1px;
+    }
+    #save-btn:hover, #calculate-btn:hover, #add-other-btn:hover {
+      background: linear-gradient(90deg, #ffb6ea 0%, #601ca3 100%);
+      transform: translateY(-2px) scale(1.07);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      width: 100%;
+    }
+    ul li {
+      background: #f3e9fa;
+      margin-bottom: 8px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      color: #601ca3;
+      font-size: 1.05rem;
+      box-shadow: 0 1px 6px #b57abc22;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      color: #601ca3;
+      margin-bottom: 1rem;
+      margin-top: 0;
+      letter-spacing: 1px;
+      text-align: center;
+      font-weight: 700;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .username {
+      font-weight: bold;
+      color: #8e44ad;
+      margin-right: 8px;
+    }
+    .exp-content {
+      color: #601ca3;
+    }
+    .aura-event-list {
+      margin-bottom: 1.5rem;
+    }
+    .aura-event-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .aura-event-item label {
+      flex: 1;
+      cursor: pointer;
+    }
+    .aura-event-points {
+      font-weight: bold;
+      color: #8e44ad;
+      margin-left: 8px;
+    }
+    .aura-total-result {
+      font-size: 1.3rem;
+      color: #601ca3;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .other-events-list {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .other-event-positive {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .other-event-negative {
+      color: #c0392b;
+      font-weight: bold;
+    }
+    .other-event-points {
+      margin-left: 8px;
+      font-weight: bold;
+    }
+    .other-event-desc {
+      margin-left: 4px;
+    }
+    .other-form-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+    .other-form-row input[type="text"] {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #b57abc55;
+      font-size: 1rem;
+    }
+    .other-classify-result {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.08rem;
+      text-align: left;
+      min-height: 1.2em;
+    }
+    .other-classify-result.positive {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .other-classify-result.negative {
+      color: #c0392b;
+      font-weight: bold;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 18px 4px 18px 4px; }
+      .button-group { flex-direction: column; gap: 8px; }
+    }
+    .pie-chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1.5rem 0 1rem 0;
+      width: 100%;
+    }
+    #aura-pie-chart {
+      max-width: 320px;
+      width: 100%;
+      height: 220px;
+      margin: 0 auto;
+      display: block;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #b57abc22;
+      padding: 12px;
+    }
+    .recent-calc-title {
+      font-size: 1.15rem;
+      color: #601ca3;
+      margin-bottom: 0.5rem;
+      margin-top: 1.2rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .recent-calc-list {
+      margin-bottom: 1.2rem;
+    }
+    .recent-calc-list li {
+      background: #f8fafc;
+      color: #601ca3;
+      font-size: 1rem;
+      border-left: 4px solid #b57abc;
+      margin-bottom: 7px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #b57abc11;
+      display: flex;
+      flex-direction: column;
+    }
+    .recent-calc-date {
+      font-size: 0.92em;
+      color: #888;
+      margin-bottom: 2px;
+    }
+    .recent-calc-points {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .recent-calc-gain {
+      color: #27ae60;
+    }
+    .recent-calc-loss {
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Aura Vibes Calculator ✨</h1>
+    <div class="button-group">
+      <button class="nav-btn active" onclick="showSection('main')">Vibe Check</button>
+      <button class="nav-btn" onclick="showSection('other')">Add Your Event</button>
+      <button class="nav-btn" onclick="showSection('recent')">History</button>
+    </div>
+    <div id="main" class="section active">
+      <div class="section-title">How's your vibe today? 🌈</div>
+      <ul class="aura-event-list">
+        <li class="aura-event-item">
+          <label><input type="checkbox" class="event-checkbox" data-points="10"> Got a compliment</label>
+          <span class="aura-event-points">+10</span>
+        </li>
+        <li class="aura-event-item">
+          <label><input type="checkbox" class="event-checkbox" data-points="8"> Helped someone out</label>
+          <span class="aura-event-points">+8</span>
+        </li>
+        <li class="aura-event-item">
+          <label><input type="checkbox" class="event-checkbox" data-points="-7"> Missed the bus</label>
+          <span class="aura-event-points">-7</span>
+        </li>
+        <li class="aura-event-item">
+          <label><input type="checkbox" class="event-checkbox" data-points="5"> Got a new follower</label>
+          <span class="aura-event-points">+5</span>
+        </li>
+        <li class="aura-event-item">
+          <label><input type="checkbox" class="event-checkbox" data-points="-5"> Got ghosted 😬</label>
+          <span class="aura-event-points">-5</span>
+        </li>
+      </ul>
+      <button id="calculate-btn" onclick="calculateAura()">Calculate My Vibes 🚀</button>
+      <div class="aura-total-result" id="aura-result"></div>
+      <div class="pie-chart-container">
+        <canvas id="aura-pie-chart"></canvas>
+      </div>
+    </div>
+    <div id="other" class="section">
+      <div class="section-title">Add Your Own Event 🔥</div>
+      <form id="other-form">
+        <div class="other-form-row">
+          <input type="text" id="other-desc" placeholder="Describe your event (e.g. aced a test)">
+          <input type="text" id="other-points" placeholder="Points (+/-)">
+        </div>
+        <button id="add-other-btn" type="button" onclick="addOtherEvent()">Add Event</button>
+      </form>
+      <div class="other-classify-result" id="other-result"></div>
+      <ul class="other-events-list" id="other-events-list"></ul>
+    </div>
+    <div id="recent" class="section">
+      <div class="recent-calc-title">Your Recent Vibe Checks 🕒</div>
+      <ul class="recent-calc-list" id="recent-calc-list"></ul>
+    </div>
+  </div>
+  <script>
+    // Section navigation
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      if (id === 'main') document.querySelectorAll('.nav-btn')[0].classList.add('active');
+      if (id === 'other') document.querySelectorAll('.nav-btn')[1].classList.add('active');
+      if (id === 'recent') document.querySelectorAll('.nav-btn')[2].classList.add('active');
+    }
+
+    // Aura calculation
+    function calculateAura() {
+      let total = 0;
+      document.querySelectorAll('.event-checkbox').forEach(cb => {
+        if (cb.checked) total += Number(cb.dataset.points);
+      });
+      let result = document.getElementById('aura-result');
+      if (total > 10) {
+        result.textContent = `Vibe: Legendary! 🌟 (+${total})`;
+      } else if (total > 0) {
+        result.textContent = `Vibe: Good! 😎 (+${total})`;
+      } else if (total === 0) {
+        result.textContent = `Vibe: Neutral. 😐 (0)`;
+      } else {
+        result.textContent = `Vibe: Oof... Try again tomorrow! 💔 (${total})`;
+      }
+      saveRecentCalc(total);
+      drawPieChart(total);
+    }
+
+    // Add other event
+    function addOtherEvent() {
+      const desc = document.getElementById('other-desc').value.trim();
+      const points = parseInt(document.getElementById('other-points').value, 10);
+      const result = document.getElementById('other-result');
+      if (!desc || isNaN(points)) {
+        result.textContent = "Please enter a valid event and points!";
+        result.className = "other-classify-result";
+        return;
+      }
+      let li = document.createElement('li');
+      li.innerHTML = `<span class="${points >= 0 ? 'other-event-positive' : 'other-event-negative'}">${points >= 0 ? '+' : ''}${points}</span>
+        <span class="other-event-desc">${desc}</span>`;
+      document.getElementById('other-events-list').appendChild(li);
+      result.textContent = points >= 0 ? "That's a win! 🎉" : "Yikes, hope tomorrow's better! 😅";
+      result.className = "other-classify-result " + (points >= 0 ? "positive" : "negative");
+      document.getElementById('other-desc').value = "";
+      document.getElementById('other-points').value = "";
+    }
+
+    // Save recent calculations
+    function saveRecentCalc(points) {
+      let history = JSON.parse(localStorage.getItem('vibeHistory') || "[]");
+      history.unshift({ date: new Date().toLocaleString(), points });
+      if (history.length > 5) history = history.slice(0, 5);
+      localStorage.setItem('vibeHistory', JSON.stringify(history));
+      renderRecentCalc();
+    }
+
+    function renderRecentCalc() {
+      let history = JSON.parse(localStorage.getItem('vibeHistory') || "[]");
+      let ul = document.getElementById('recent-calc-list');
+      ul.innerHTML = "";
+      history.forEach(item => {
+        let li = document.createElement('li');
+        li.innerHTML = `<span class="recent-calc-date">${item.date}</span>
+          <span class="recent-calc-points ${item.points >= 0 ? 'recent-calc-gain' : 'recent-calc-loss'}">${item.points >= 0 ? '+' : ''}${item.points}</span>
+          <span>${item.points > 10 ? 'Legendary vibes! 🌟' : item.points > 0 ? 'Good vibes! 😎' : item.points === 0 ? 'Neutral vibes. 😐' : 'Oof vibes. 💔'}</span>`;
+        ul.appendChild(li);
+      });
+    }
+    renderRecentCalc();
+
+    // Pie chart (simple, not a real chart lib)
+    function drawPieChart(points) {
+      const canvas = document.getElementById('aura-pie-chart');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 320;
+      canvas.height = 220;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let percent = Math.max(Math.min((points + 20) / 40, 1), 0); // normalize -20 to +20
+      let start = -0.5 * Math.PI;
+      let end = start + percent * 2 * Math.PI;
+      // Background
+      ctx.beginPath();
+      ctx.arc(160, 110, 80, 0, 2 * Math.PI);
+      ctx.fillStyle = "#f3e9fa";
+      ctx.fill();
+      // Vibe arc
+      ctx.beginPath();
+      ctx.arc(160, 110, 80, start, end);
+      ctx.lineTo(160, 110);
+      ctx.fillStyle = points >= 10 ? "#27ae60" : points > 0 ? "#8ec5fc" : points === 0 ? "#b57abc" : "#c0392b";
+      ctx.fill();
+      // Text
+      ctx.font = "bold 1.5rem Segoe UI";
+      ctx.fillStyle = "#601ca3";
+      ctx.textAlign = "center";
+      ctx.fillText(points >= 0 ? "+" + points : points, 160, 120);
+      ctx.font = "1rem Segoe UI";
+      ctx.fillText(points > 10 ? "Legendary!" : points > 0 ? "Good!" : points === 0 ? "Neutral" : "Oof!", 160, 145);
+    }
+  </script>
+</body>
+</html>
